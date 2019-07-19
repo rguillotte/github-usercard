@@ -25,7 +25,21 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell'];
+
+followersArray.forEach((user)=>{
+  axios.get(`https://api.github.com/users/${user}`)
+    .then(data => {
+      const entry = document.querySelector('.cards');
+      const newUser = createCard(data);
+      entry.appendChild(newUser);
+    })
+})
 
 axios.get('https://api.github.com/users/rguillotte')
   .then(data => {
@@ -38,12 +52,6 @@ axios.get('https://api.github.com/users/rguillotte')
 .catch(err => {
   console.log(err);
 })
-
-// const ray = createCard('https://api.github.com/users/rguillotte');
-
-// const entry = document.querySelector('.cards');
-
-// entry.appendChild(ray);
 
 function createCard(user){
   //create elements
