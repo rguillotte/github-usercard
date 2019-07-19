@@ -43,6 +43,7 @@ followersArray.forEach((user)=>{
 
 axios.get('https://api.github.com/users/rguillotte')
   .then(data => {
+    console.log(data);
     const entry = document.querySelector('.cards'); 
     const ray = createCard(data);
     entry.appendChild(ray);
@@ -89,9 +90,10 @@ function createCard(user){
   userImage.src = user.data.avatar_url;
   name.textContent = user.data.name;
   userName.textContent = user.data.login;
-  location.textContent = `Location ${user.data.location}`;
-  profile.textContent = 'Profile:';
-  profileURL.href = user.data.html_url;
+  location.textContent = `Location: ${user.data.location}`;
+  profile.innerHTML = `Profile: <a href=${user.data.html_url}>${user.data.html_url}`;
+  // profileURL.href = user.data.html_url;
+  // profileURL.innerHTML = profileURL.href;
   followers.textContent = `Followers: ${user.data.followers}`;
   following.textContent = `Following: ${user.data.following}`;
   bio.textContent = `Bio: ${user.data.bio}`;
