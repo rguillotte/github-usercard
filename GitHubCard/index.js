@@ -89,7 +89,7 @@ function createCard(user){
   userImage.src = user.data.avatar_url;
   name.textContent = user.data.name;
   userName.textContent = user.data.login;
-  location.textContent = `Locaion ${user.data.location}`;
+  location.textContent = `Location ${user.data.location}`;
   profile.textContent = 'Profile:';
   profileURL.href = user.data.html_url;
   followers.textContent = `Followers: ${user.data.followers}`;
